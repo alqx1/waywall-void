@@ -1,6 +1,6 @@
 # Waywall (on Void Linux)
 
-This project hold the templates to build Waywall on Void Linux.
+This project holds the templates to build Waywall on Void Linux.
 
 ## Installation
 
