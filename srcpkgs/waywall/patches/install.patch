@@ -1,0 +1,25 @@
+--- a/Makefile	2026-03-17 19:34:28.850973951 +0100
++++ b/Makefile	2026-03-17 19:37:05.240975994 +0100
+@@ -1,4 +1,8 @@
+-.PHONY: all check clean configure_debug configure_release format lint
++.PHONY: all check clean configure_debug configure_release format lint install
++
++PREFIX=/usr
++TARGET=waywall
++OUTPUT=build/waywall/$(TARGET)
+ 
+ LUA=waywall/glsl/embed.lua \
+ 	waywall/lua/api.lua \
+@@ -14,6 +18,12 @@
+ clean: build/build.ninja
+ 	ninja -C build clean
+ 
++install: build/build.ninja
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	rm -f $(DESTDIR)$(PREFIX)/bin/$(TARGET)
++	cp -f $(OUTPUT) $(DESTDIR)$(PREFIX)/bin
++	chmod 755 $(DESTDIR)$(PREFIX)/bin/$(TARGET)
++
+ configure_debug: build/build.ninja
+ 	meson configure build -Dbuildtype=debug -Db_sanitize=address,undefined
+ 
