@@ -35,7 +35,7 @@ cat waywall-void/common/shlibs >> void-packages/common/shlibs
 5. Build the packages and install them.
 
 ```sh
-cd waywall-void
+cd void-packages
 ./xbps-src pkg libspng
 ./xbps-src pkg waywall
 sudo xbps-install -R hostdir/binpkgs waywall
